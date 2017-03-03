@@ -22,8 +22,9 @@
 
 "Deploy config":
   file.managed:
-    - name: '/vault/bases.conf'
+    - name: '/etc/vault.d/config.json'
     - source: salt://vault/base.conf
+    - makedirs: True
 
 "Set environment variable for vault":
   environ.setenv:

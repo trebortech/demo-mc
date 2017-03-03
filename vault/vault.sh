@@ -1,6 +1,6 @@
 
 start() {
-    /usr/local/bin/vault server -config=/etc/vault.d &
+    /usr/bin/vault server -config=/etc/vault.d &
     return $?
 }
 
@@ -14,7 +14,7 @@ status(){
         echo "Vault is not running"
         return 3
     else
-        /usr/local/bin/vault status -address=http://$(cat /etc/vault.d/config.json | awk '/address/ {x=$3} END {print x}'|sed 's/"//g')
+        /usr/bin/vault status -address=http://$(cat /etc/vault.d/config.json | awk '/address/ {x=$3} END {print x}'|sed 's/"//g')
         return $?
     fi
 }
