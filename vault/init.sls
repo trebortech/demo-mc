@@ -6,6 +6,10 @@
     - source: salt://vault/{{ vaultbin }}
     - archive_format: zip
 
+"Create sym link to vault":
+  file.symlink:
+    - name: '/usr/bin/vault'
+    - target: '/vault/vault'
 
 "Deploy config":
   file.managed:
