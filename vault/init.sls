@@ -5,6 +5,7 @@
     - name: '/vault'
     - source: salt://vault/{{ vaultbin }}
     - archive_format: zip
+    - enforce_toplevel: False
 
 "Create sym link to vault":
   file.symlink:
