@@ -9,7 +9,7 @@
   runner.event.send:
     - tag: 'OutOfCompliance'
     - data: {
-            'minionid': data['id'],
+            'minionid': {{ data['id'] }},
             'return': {{ returns[return]['__id__'] }}
             }
 {% endif %}
