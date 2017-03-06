@@ -11,7 +11,7 @@ __virtualname__ = 'mayopatch'
 
 
 def __virtual__():
-    if salt.util.is_linux():
+    if salt.utils.is_linux():
         return __virtualname__
 
     return (False, 'The mayo patch grain module cannot be loaded: only available on Linux systems.')
