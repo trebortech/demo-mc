@@ -9,9 +9,10 @@ __virtualname__ = 'mayopatch'
 
 
 def __virtual__():
-    if __grains__['kernel'] != 'Linux':
-        return (False, 'The mayo patch grain module cannot be loaded: only available on Linux systems.')
-    return __virtualname__
+    if salt.util.is_linux():
+        return __virtualname__
+
+    return (False, 'The mayo patch grain module cannot be loaded: only available on Linux systems.')
 
 
 def get_schedule():
