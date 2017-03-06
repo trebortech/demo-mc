@@ -9,9 +9,9 @@ __virtualname__ = 'mayopatch'
 
 
 def __virtual__():
-    if __grains__['kernel'] == 'Linux':
-        return __virtualname__
-    return (False, 'The mayo patch grain could not be loaded')
+    if __grains__['kernel'] != 'Linux':
+        return (False, 'The mayo patch grain module cannot be loaded: only available on Linux systems.')
+    return __virtualname__
 
 
 def get_schedule():
