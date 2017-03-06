@@ -19,6 +19,7 @@ def __virtual__():
 
 def get_schedule():
     ret = {}
+    retdata = {}
     files = []
 
     dirname = "/etc/dcis_maintenance"
@@ -43,4 +44,5 @@ def get_schedule():
                 ret['special'] = stat[1]
             if stat[0] == 'system_contact':
                 ret['contact'] = stat[1]
-    return retdata['mayo'] = ret
+    retdata['mayo'] = ret
+    return retdata
