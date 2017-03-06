@@ -43,4 +43,4 @@ def get_schedule():
                 ret['special'] = stat[1]
             if stat[0] == 'system_contact':
                 ret['contact'] = stat[1]
-    return ret
+    return retdata['mayo'] = ret
