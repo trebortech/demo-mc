@@ -33,16 +33,15 @@ def get_schedule():
             stat = file.split(":")
 
             if stat[0] == 'patch_day':
-                ret['deployday'] = stat[1]
+                ret['mayo-deployday'] = stat[1]
             if stat[0] == 'patch_time':
-                ret['deploytime'] = stat[1]
+                ret['mayo-deploytime'] = stat[1]
             if stat[0] == 'patch_week':
-                ret['deployweek'] = stat[1]
+                ret['mayo-deployweek'] = stat[1]
             if stat[0] == 'server_purpose':
-                ret['purpose'] = stat[1]
+                ret['mayo-purpose'] = stat[1]
             if stat[0] == 'special_instructions':
-                ret['special'] = stat[1]
+                ret['mayo-special'] = stat[1]
             if stat[0] == 'system_contact':
-                ret['contact'] = stat[1]
-    retdata['mayo'] = ret
-    return retdata
+                ret['mayo-contact'] = stat[1]
+    return ret
