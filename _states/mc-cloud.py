@@ -60,6 +60,7 @@ def mayobuild(name,
               mayotagversion,
               mayorepo,
               dockerfilepath,
+              forcetag=True,
               sourcedir='/root',
               builddir='/root/mayobuild',
               cliqrsourceimage='cliqr/worker'):
@@ -91,7 +92,7 @@ def mayobuild(name,
         ret['changes']['Errors'].append('{0}:latest did not exists'.format(cliqrsourceimage))
 
     # Load cliqr image from tar file
-    __salt__['dockerng.load']('{0}/{1}'.format(sourcedir, cliqrimagefile), image=cliqrstage)
+    __salt__['dockerng.load']('{0}/{1}'.format(sourcedir, cliqrimagefile), image=cliqrstage, forcetag=forcetag)
     ret['changes']['Results'].append('{0} has been loaded into docker images'.format(cliqrimagefile))
 
     # Pull down Mayo-Cliqr docker file
