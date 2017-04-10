@@ -128,6 +128,7 @@ def deploybuild(name,
                 mayotagversion,
                 buildserver,
                 sourcedir,
+                forcetag=True,
                 cliqrsourceimage='cliqr/worker'):
 
     ret = {'name': name,
@@ -146,7 +147,7 @@ def deploybuild(name,
                             dst=mayoimagepath)
 
     # Load new tar file
-    __salt__['dockerng.load'](mayoimagepath, '{0}:latest'.format(cliqrsourceimage))
+    __salt__['dockerng.load'](mayoimagepath, image='{0}:latest'.format(cliqrsourceimage), forcetag=forcetag)
 
     # Remove the tar file
     __salt__['file.remove'](mayoimagepath)
