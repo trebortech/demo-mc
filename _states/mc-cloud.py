@@ -84,15 +84,16 @@ def mayobuild(name,
     __salt__['file.remove'](builddir)
     __salt__['file.mkdir'](builddir)
 
+    file = open('/tmp/saltdebug', 'a')
+    file.write("Starting RMI of latest")
     # Remove existing images for Cliqr
     try:
         results = __salt__['dockerng.rmi']('{0}:{1}'.format(cliqrsourceimage, 'latest'))
-        file = open('/tmp/saltdebug', 'a')
         file.write(str(results))
-        file.close()
         ret['changes']['Results'].append('{0}:latest has been removed'.format(cliqrsourceimage))
     except CommandExecutionError:
         ret['changes']['Errors'].append('{0}:latest did not exists'.format(cliqrsourceimage))
+    file.close()
 
     # Load cliqr image from tar file
     __salt__['dockerng.load']('{0}/{1}'.format(sourcedir, cliqrimagefile), image=cliqrstage, forcetag=forcetag)
