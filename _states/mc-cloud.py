@@ -86,7 +86,10 @@ def mayobuild(name,
 
     # Remove existing images for Cliqr
     try:
-        __salt__['dockerng.rmi']('{0}:{1}'.format(cliqrsourceimage, 'latest'))
+        results = __salt__['dockerng.rmi']('{0}:{1}'.format(cliqrsourceimage, 'latest'))
+        file = open('/tmp/saltdebug', 'a')
+        file.write(str(results))
+        file.close()
         ret['changes']['Results'].append('{0}:latest has been removed'.format(cliqrsourceimage))
     except CommandExecutionError:
         ret['changes']['Errors'].append('{0}:latest did not exists'.format(cliqrsourceimage))
